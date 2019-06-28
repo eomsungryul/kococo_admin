@@ -10,5 +10,7 @@ public interface RecordMapper extends Mapper<Record> {
 	List<Record> selectConsultList(Record vo);
 
 	int selectConsultListCnt(Record vo);
+
+	List<Record> selectUserConsultList(Record vo);
 	
 }

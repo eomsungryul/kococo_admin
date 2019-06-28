@@ -8,4 +8,6 @@ import kr.co.dwebss.kococo.core.Service;
  */
 public interface AdminService extends Service<Admin> {
 
+	Admin selectAdmin(Admin vo);
+
 }

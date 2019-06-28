@@ -31,4 +31,9 @@ public class RecordServiceImpl extends AbstractService<Record> implements Record
 		return recordMapper.selectConsultListCnt(vo);
 	}
 
+	@Override
+	public List<Record> selectUserConsultList(Record vo) {
+		return recordMapper.selectUserConsultList(vo);
+	}
+
 }

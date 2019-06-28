@@ -19,4 +19,9 @@ public class AdminServiceImpl extends AbstractService<Admin> implements AdminSer
     @Resource
     private AdminMapper adminMapper;
 
+	@Override
+	public Admin selectAdmin(Admin vo) {
+		return adminMapper.selectAdmin(vo);
+	}
+
 }

@@ -61,8 +61,8 @@ function fnLogin(){
 	$.ajax({
 	        type : "post",
 	        url : contextPath + "/loginAction",
-    		data : {"id" : user_login_id,
-					"pw" : user_password},
+    		data : {"adminId" : user_login_id,
+					"adminPw" : user_password},
 	        dataType : "json",
 	        error:function(request,status,error){
 	            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

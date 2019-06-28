@@ -13,5 +13,6 @@ public interface RecordService extends Service<Record> {
 
 	List<Record> selectConsultList(Record vo);
 	int selectConsultListCnt(Record vo);
+	List<Record> selectUserConsultList(Record vo);
 
 }

@@ -82,6 +82,37 @@
 				    </div>
 				  </div>
 				</form:form>
+				
+              	<c:if test="${fn:length(resultList)!=0}">
+				  <div class="form-group row" style="margin-top: 100px;">
+				    <label class="col-sm-2 col-form-label">이전 상담 내역</label>
+				  </div>
+		            <table class="table">
+		              <thead>
+		                <tr>
+		                  <th>사용자ID</th>
+		                  <th>상담명</th>
+		                  <th>상담등록일</th>
+		                  <th>답변여부</th>
+		                </tr>
+		              </thead>
+		              <tbody>
+		                 	<c:forEach var="result" items="${ resultList }" varStatus="status">
+				                <tr onclick="fnDetail(${result.recordId })">
+		<%-- 		                  <td>${ pni.totalRecordCount - (((pni.pageIndex - 1) * pni.recordCountPerPage) + (status.index)) }</td> --%>
+				                  <td>${ result.userAppId}</td>
+				                  <td>${result.consultingTitle }</td>
+				                  <td>
+									<fmt:formatDate var="resultRegDt" value="${result.consultingRegistDt }" pattern="yyyy-MM-dd"/>
+									${resultRegDt}</td>
+				                  <td>${result.consultingReplyYn }</td>
+				                </tr>
+		                 	</c:forEach>
+		              </tbody>
+		            </table>
+              	</c:if>
+				
+				
 	        </div>
 	      </div>
         </main>
@@ -137,6 +168,14 @@
 		}
 		
 	}
+
+	/**
+	 *  게시판 상세 페이지 
+	 */
+	function fnDetail(recordId){
+		document.registFrm.action = contextPath + "/admin/consult/detail?recordId="+recordId;
+		document.registFrm.submit();
+	}
 	
 	/**
 	 *  상담 삭제
@@ -147,6 +186,9 @@
 // 		document.registFrm.submit();
 // 	}
 	//]]>
+	
+	
+	
 	</script>
 	
 </body>

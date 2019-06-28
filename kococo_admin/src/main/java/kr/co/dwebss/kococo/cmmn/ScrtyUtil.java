@@ -45,7 +45,7 @@ public class ScrtyUtil {
 	             hexString.append(hex);
 	         }
 	         // 출력
-	         System.out.println(hexString.toString());
+//	         System.out.println(hexString.toString());
 			return hexString.toString();
 			
 	     } catch (Exception ex) {

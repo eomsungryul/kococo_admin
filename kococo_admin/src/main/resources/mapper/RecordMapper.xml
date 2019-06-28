@@ -75,6 +75,21 @@
 			ORDER BY RECORD_ID
 		) A
     </select>
+    
+    
+    
+    <select id="selectUserConsultList" parameterType="kr.co.dwebss.kococo.model.Record" resultMap="recordMap">
+			<![CDATA[ 
+			SELECT 
+				*
+			FROM RECORD
+	      WHERE USER_APP_ID =#{userAppId}
+		    AND CONSULTING_YN='Y'
+	      AND CONSULTING_REGIST_DT < #{consultingRegistDt}
+	      ORDER BY RECORD_ID DESC
+			]]>
+    </select>
+    
   
   
   

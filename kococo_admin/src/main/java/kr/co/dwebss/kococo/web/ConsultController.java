@@ -65,12 +65,16 @@ public class ConsultController {
 		ModelAndView mav = new ModelAndView("admin/consult/regist");
 
 		Record result = recordService.findById(vo.getRecordId());
+
+		//유저 아이디와 불러온 날짜 
+		List<Record> resultList = recordService.selectUserConsultList(result);
+		
 		mav.addObject("result", result);
+		mav.addObject("resultList", resultList);
 		mav.addObject("searchVO", vo);
 		return mav;
 	}
     
-
 	/**
 	 * 상담 등록
 	 *
@@ -80,15 +84,15 @@ public class ConsultController {
 	 * @return String
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/admin/consult/insert")
-	public ModelAndView insert(
-			@ModelAttribute("record") Record vo,
-			ModelMap model) throws Exception {
-		ModelAndView mav = new ModelAndView("forward:/admin/consult/list");
-		recordService.save(vo);
-
-		return mav;
-	}
+//	@RequestMapping(value = "/admin/consult/insert")
+//	public ModelAndView insert(
+//			@ModelAttribute("record") Record vo,
+//			ModelMap model) throws Exception {
+//		ModelAndView mav = new ModelAndView("forward:/admin/consult/list");
+//		recordService.save(vo);
+//
+//		return mav;
+//	}
 	
 	/**
 	 * 상담 수정
@@ -119,13 +123,13 @@ public class ConsultController {
 	 * @return String
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/admin/consult/delete")
-	public ModelAndView delete(
-			@ModelAttribute("record") Record vo,
-			ModelMap model) throws Exception {
-	  ModelAndView mav = new ModelAndView("forward:/admin/consult/list");
-      recordService.deleteById(vo.getRecordId());
-      
-	  return mav;
-	}
+//	@RequestMapping(value = "/admin/consult/delete")
+//	public ModelAndView delete(
+//			@ModelAttribute("record") Record vo,
+//			ModelMap model) throws Exception {
+//	  ModelAndView mav = new ModelAndView("forward:/admin/consult/list");
+//      recordService.deleteById(vo.getRecordId());
+//      
+//	  return mav;
+//	}
 }
