@@ -48,7 +48,17 @@ public class CommonController {
 
 		return "inc/incLeft";
 	}
+
 	
+	@RequestMapping(value="/")
+	public String index2(
+			HttpServletRequest request,
+			@RequestParam HashMap<String, String> paramMap,
+			HttpSession session,
+			ModelMap model)
+			throws Exception {
+		return "login";
+	}
 	
 	@RequestMapping(value="/login")
 	public String index(
