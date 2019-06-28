@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dwebss.kococo.dao.RecordMapper">
+  <resultMap id="recordMap" type="kr.co.dwebss.kococo.model.Record">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="RECORD_ID" jdbcType="INTEGER" property="recordId" />
+    <result column="RECORD_START_D" jdbcType="DATE" property="recordStartD" />
+    <result column="RECORD_START_DT" jdbcType="TIMESTAMP" property="recordStartDt" />
+    <result column="RECORD_END_D" jdbcType="DATE" property="recordEndD" />
+    <result column="RECORD_END_DT" jdbcType="TIMESTAMP" property="recordEndDt" />
+    <result column="USER_APP_ID" jdbcType="CHAR" property="userAppId" />
+    <result column="CONSULTING_YN" jdbcType="CHAR" property="consultingYn" />
+    <result column="CONSULTING_REPLY_YN" jdbcType="CHAR" property="consultingReplyYn" />
+    <result column="CONSULTING_TITLE" jdbcType="VARCHAR" property="consultingTitle" />
+    <result column="CONSULTING_CONTENTS" jdbcType="VARCHAR" property="consultingContents" />
+    <result column="CONSULTING_REGIST_DT" jdbcType="TIMESTAMP" property="consultingRegistDt" />
+    <result column="CONSULTING_REPLY_CONTENTS" jdbcType="VARCHAR" property="consultingReplyContents" />
+    <result column="CONSULTING_REPLY_REGIST_DT" jdbcType="TIMESTAMP" property="consultingReplyRegistDt" />
+    <result column="CONSULTING_REPLY_ADMIN_ID" jdbcType="VARCHAR" property="consultingReplyAdminId" />
+    <result column="SLEEP_STATUS_CD" jdbcType="INTEGER" property="sleepStatusCd" />
+  </resultMap>
+  
+ 	<sql id="SelectWhereQuery">
+	WHERE 1=1
+	AND CONSULTING_YN='Y'
+		<if test="consultingTitle !='' and  consultingTitle !=null">
+			AND CONSULTING_TITLE = #{consultingTitle}
+		</if>	
+		<if test="consultingContents !='' and  consultingContents !=null">
+			AND CONSULTING_CONTENTS = #{consultingContents}
+		</if>	
+	</sql>
+	
+    <sql id="WhereQuery">
+	WHERE 1=1
+	AND CONSULTING_YN='Y'
+		<if test="searchCondition=='consultingTitle' and searchKeyword!='' and searchKeyword!=null">
+			AND CONSULTING_TITLE LIKE CONCAT('%',#{ searchKeyword },'%')
+		</if>	
+		<if test="searchCondition=='userAppId' and searchKeyword!='' and searchKeyword!=null">
+			AND USER_APP_ID LIKE CONCAT('%',#{ searchKeyword },'%')
+		</if>	
+		<if test="searchCondition=='consultingContents' and searchKeyword!='' and searchKeyword!=null">
+			AND CONSULTING_CONTENTS LIKE CONCAT('%',#{ searchKeyword },'%')
+		</if>	
+	</sql>
+  
+  <select id="selectConsult" parameterType="kr.co.dwebss.kococo.model.Record" resultMap="recordMap">
+    	SELECT 
+    		*
+		FROM RECORD 
+		<include refid="kr.co.dwebss.kococo.dao.RecordMapper.SelectWhereQuery" />
+    </select>
+    
+    
+    <select id="selectConsultList" parameterType="kr.co.dwebss.kococo.model.Record" resultMap="recordMap">
+    	SELECT A.* FROM (
+			SELECT 
+				@rownum := @rownum + 1 as rownum,
+				r.*
+			FROM RECORD r, (select @rownum :=0) r
+			<include refid="kr.co.dwebss.kococo.dao.RecordMapper.WhereQuery" />
+			ORDER BY RECORD_ID DESC
+		) A
+		where A.rownum LIMIT #{firstIndex}, #{recordCountPerPage}
+    </select>
+    
+    <select id="selectConsultListCnt" parameterType="kr.co.dwebss.kococo.model.Record" resultType="INTEGER">
+    	SELECT COUNT(*) FROM (
+			SELECT *
+			FROM RECORD
+			<include refid="kr.co.dwebss.kococo.dao.RecordMapper.WhereQuery" />
+			ORDER BY RECORD_ID
+		) A
+    </select>
+  
+  
+  
+</mapper>

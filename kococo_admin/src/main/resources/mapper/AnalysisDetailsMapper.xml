@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dwebss.kococo.dao.AnalysisDetailsMapper">
+  <resultMap id="BaseResultMap" type="kr.co.dwebss.kococo.model.AnalysisDetails">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ANALYSIS_DETAILS_ID" jdbcType="INTEGER" property="analysisDetailsId" />
+    <result column="TERM_TYPE_CD" jdbcType="INTEGER" property="termTypeCd" />
+    <result column="TERM_START_DT" jdbcType="TIMESTAMP" property="termStartDt" />
+    <result column="TERM_END_DT" jdbcType="TIMESTAMP" property="termEndDt" />
+    <result column="ANALYSIS_ID" jdbcType="INTEGER" property="analysisId" />
+    <result column="ANALYSIS_DATA" jdbcType="LONGVARCHAR" property="analysisData" />
+  </resultMap>
+</mapper>

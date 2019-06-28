@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dwebss.kococo.dao.AnalysisMapper">
+  <resultMap id="BaseResultMap" type="kr.co.dwebss.kococo.model.Analysis">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ANALYSIS_ID" jdbcType="INTEGER" property="analysisId" />
+    <result column="ANALYSIS_START_D" jdbcType="DATE" property="analysisStartD" />
+    <result column="ANALYSIS_START_DT" jdbcType="TIMESTAMP" property="analysisStartDt" />
+    <result column="ANALYSIS_END_D" jdbcType="DATE" property="analysisEndD" />
+    <result column="ANALYSIS_END_DT" jdbcType="TIMESTAMP" property="analysisEndDt" />
+    <result column="RECORD_ID" jdbcType="INTEGER" property="recordId" />
+    <result column="ANALYSIS_FILE_NM" jdbcType="VARCHAR" property="analysisFileNm" />
+    <result column="ANALYSIS_FILE_APP_PATH" jdbcType="VARCHAR" property="analysisFileAppPath" />
+    <result column="ANALYSIS_SERVER_UPLOAD_YN" jdbcType="CHAR" property="analysisServerUploadYn" />
+    <result column="ANALYSIS_SERVER_UPLOAD_PATH" jdbcType="VARCHAR" property="analysisServerUploadPath" />
+    <result column="ANALYSIS_SERVER_UPLOAD_DT" jdbcType="TIMESTAMP" property="analysisServerUploadDt" />
+    <result column="CLAIM_YN" jdbcType="CHAR" property="claimYn" />
+    <result column="CLAIM_REASON_CD" jdbcType="INTEGER" property="claimReasonCd" />
+    <result column="CLAIM_CONTENTS" jdbcType="VARCHAR" property="claimContents" />
+    <result column="CLAIM_REGIST_DT" jdbcType="TIMESTAMP" property="claimRegistDt" />
+    <result column="RECORDING_DATA" jdbcType="LONGVARCHAR" property="recordingData" />
+  </resultMap>
+</mapper>

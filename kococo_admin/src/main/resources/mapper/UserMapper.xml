@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dwebss.kococo.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="kr.co.dwebss.kococo.model.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="USER_APP_ID" jdbcType="CHAR" property="userAppId" />
+    <result column="USER_AGE" jdbcType="INTEGER" property="userAge" />
+    <result column="USER_GENDER" jdbcType="CHAR" property="userGender" />
+    <result column="USER_WEIGHT" jdbcType="INTEGER" property="userWeight" />
+    <result column="USER_HEIGHT" jdbcType="INTEGER" property="userHeight" />
+    <result column="USER_REGIST_DT" jdbcType="TIMESTAMP" property="userRegistDt" />
+    <result column="DEVICE_FILE_STORE_DAY_TERM" jdbcType="INTEGER" property="deviceFileStoreDayTerm" />
+  </resultMap>
+</mapper>
